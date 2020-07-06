@@ -1,3 +1,6 @@
+# Sample terraform config to bring up an AWS spot instance with associated security group and VPC
+# Different auth key config options shown
+
 #
 variable "aws_secret_key" { default = "my-access-key" }
 variable "aws_access_key" { default = "my-secret-key" }
@@ -6,7 +9,7 @@ variable "aws_access_key" { default = "my-secret-key" }
 variable "ami" { default = "ami-0bbe6b35405ecebdb" } # Ubuntu 18.04 image
 variable "inst_type" { default = "t3a.medium" }
 variable "region" { default = "us-west-2" }
-variable "key_name" { default = "atg2_oregon" }
+variable "key_name" { default = "my_key" }
 variable "spot_req_name" { default = "terraform_spot_test" }
 variable "vol_size" { default = 100 }
 
@@ -20,7 +23,7 @@ provider "aws" {
 # Using shared credentials file (non-default profile)
 provider "aws" {
   alias             = "aws_2"
-  profile           = "atg2"
+  profile           = "my_prof"
   region            = var.region
 }
 
